@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript POO</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Sistema Administracion de Vehiculos</h1>
+  </header>
+
+  <main>
+    <form id="formulario">
+      <div class="contenedor">
+        <div>
+          <h1>Datos del Vehiculos</h1>
+
+          <nav>
+            <input type="submit" value="Inicio" id="inicio">
+            <input type="submit" value="Auto" id="auto">
+            <input type="submit" value="Moto" id="moto">
+            <input type="submit" value="Camion" id="camion">
+          </nav>
+
+          <div>
+            <label for="placa">
+              Placa:
+              <input type="text" id="placa" placeholder="Tu placa">
+            </label>
+          </div>
+          <div>
+            <label for="marca">
+              Marca:
+              <input type="text" id="marca" placeholder="Tu marca">
+            </label>
+          </div>
+          <div>
+            <label for="color">
+              Color:
+              <input type="text" id="color" placeholder="Tu color">
+            </label>
+          </div>
+          <div id="tipo-vehiculo">
+
+          </div>
+
+        </div>
+
+        <div>
+          <input type="submit" value="Guardar" id="guardar">
+        </div>
+    </form>
+  </main>
+  <script src="./js/index.js" type="module"></script>
+</body>
+
+</html>
