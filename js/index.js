@@ -16,8 +16,7 @@ import {
         } 
 from "../controller/controllerVehiculo.js";
 
-import { 
-         generarId, 
+import {
          limpiarHTML 
         } 
 from "../helper/funciones.js";
