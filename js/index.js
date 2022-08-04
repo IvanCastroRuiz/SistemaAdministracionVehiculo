@@ -8,21 +8,19 @@ let moto = document.querySelector('#moto');
 let camion = document.querySelector('#camion');
 const eliminar = document.querySelector('#eliminar');
 
-
-//Modelo
-import Automovil from "../model/Automovil.js";
-import Moto from "../model/Moto.js";
-import Camion from "../model/Camion.js";
-//import bd_vehiculo from "../data/bd_vehiculo.js";
-
+ 
 // Controlador
-import { addVehiculo, 
-         findAll 
+import { 
+         findAll,
+         validarFormulario 
         } 
 from "../controller/controllerVehiculo.js";
 
-import { generarId, 
-         limpiarHTML } from "../helper/funciones.js";
+import { 
+         generarId, 
+         limpiarHTML 
+        } 
+from "../helper/funciones.js";
 
 // Bloque de Funciones 
 
@@ -35,16 +33,45 @@ formulario.addEventListener('submit', (e) => {
     const infVehiculo = document.querySelector("#contenedor-veh");
 
     infVehiculo.innerHTML = `
-                              <div id="index">
-                                <h2>Listado de Vehiculos</h2>
-                                <input type="submit" value="Consultar" id="finAll">
-                                <div id="vehiculo">
-
-
+                              <div id="resultados">
+                                <h2>Lista de Vehiculos</h2>
+                                <div class="formulario">
+                                    <!-- Listado Vehiculo  -->
+                                    <main class="md:w-3/5  xl:w-4/5 px-5 py-10 bg-gray-200">
+                                        <div class="flex flex-col mt-100">
+                                            <div class="py-2 overflow-x-auto">
+                                                <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                                                    <table class="min-w-full">
+                                                        <thead class="bg-gray-100 ">
+                                                            <tr>
+                                                                <th id="nombre" class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                                                        Placa
+                                                                </th>
+                                                                <th id="marca" class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                                                        Marca
+                                                                </th>
+                                                                <th id="color" class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                                                        Color
+                                                                </th>
+                                                                <th id="informacion" class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                                                        Informacion
+                                                                </th>
+                        
+                                                                <th id="acciones" class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                                                    Acciones
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="listado-vehiculo" class="bg-white"></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </main>  
                                 </div>
-                              </div>
+                            </div>
+                            <input class="boton" type="submit" value="Consultar" id="finAll">
                             `;
-
 
     const finAll = document.querySelector("#finAll");
     finAll.addEventListener("click",  () => { 
@@ -61,36 +88,37 @@ formulario.addEventListener('submit', (e) => {
     infVehiculo.innerHTML = `
                             <div id="index">
                               <div id="vehiculo"> 
-
-                                  <div id="tipo">
+                                  <h2>Informacion Automovil</h2>
+                                <div class="contenedor-campos" id="tipo">
+                                  <div class="campos">
                                     <label for="placa">
                                       Placa:
-                                      <input type="text" id="placa" placeholder="Tu placa">
+                                      <input class="input-text" type="text" id="placa" placeholder="Tu placa">
                                     </label>
                                   </div>
-                                  <div>
+                                  <div class="campos">
                                     <label for="marca">
                                       Marca:
-                                      <input type="text" id="marca" placeholder="Tu marca">
+                                      <input class="input-text" type="text" id="marca" placeholder="Tu marca">
                                     </label>
                                   </div>
-                                  <div>
+                                  <div class="campos">
                                     <label for="color">
                                       Color:
-                                      <input type="text" id="color" placeholder="Tu color">
+                                      <input class="input-text" type="text" id="color" placeholder="Tu color">
                                     </label>
                                   </div>
-                                  <div id="tipo-vehiculo">
+                                  <div class="campos" id="tipo-vehiculo">
                                     <label for="num-puerta">
                                         Numero puertas:
-                                        <input type="text" id="num-puerta" placeholder="Numero puertas">
+                                        <input class="input-text" type="text" id="num-puerta" placeholder="Numero puertas">
                                     </label> 
                                   </div>
-
+                                </div>
                               </div>
                             </div>
                             <div>
-                              <input type="submit" value="Guardar" id="guardar">
+                              <input class="boton" type="submit" value="Guardar" id="guardar">
                             </div>      
                             `;
 
@@ -115,30 +143,30 @@ formulario.addEventListener('submit', (e) => {
     infVehiculo.innerHTML =`
                             <div id="index">
                               <div id="vehiculo"> 
-
-                                <div id="tipo">
-                                  <div>
+                                <h2>Informacion Moto</h2>
+                                <div class="contenedor-campos" id="tipo">
+                                  <div class="campos">
                                     <label for="placa">
                                       Placa:
-                                      <input type="text" id="placa" placeholder="Tu placa">
+                                      <input class="input-text" type="text" id="placa" placeholder="Tu placa">
                                     </label>
                                   </div>
-                                  <div>
+                                  <div class="campos">
                                     <label for="marca">
                                       Marca:
-                                      <input type="text" id="marca" placeholder="Tu marca">
+                                      <input class="input-text" type="text" id="marca" placeholder="Tu marca">
                                     </label>
                                   </div>
-                                  <div>
+                                  <div class="campos">
                                     <label for="color">
                                       Color:
-                                      <input type="text" id="color" placeholder="Tu color">
+                                      <input class="input-text" type="text" id="color" placeholder="Tu color">
                                     </label>
                                   </div>
-                                  <div id="tipo-vehiculo">
+                                  <div class="campos" id="tipo-vehiculo">
                                     <label for="num-llantas">
                                           Numero Llantas:
-                                          <input type="text" id="num-llantas" placeholder="Numero llantas">
+                                          <input class="input-text" type="text" id="num-llantas" placeholder="Numero llantas">
                                     </label>
                                   </div>
                                 </div>
@@ -146,7 +174,7 @@ formulario.addEventListener('submit', (e) => {
                               </div>
                             </div>
                             <div>
-                              <input type="submit" value="Guardar" id="guardar">
+                              <input class="boton" type="submit" value="Guardar" id="guardar">
                             </div>      
                         `;
 
@@ -167,29 +195,30 @@ formulario.addEventListener('submit', (e) => {
     infVehiculo.innerHTML = `
                             <div id="index">
                               <div id="vehiculo"> 
-                                <div id="tipo">
-                                  <div>
+                                <h2>Informacion Camion</h2>
+                                <div class="contenedor-campos" id="tipo">
+                                  <div class="campos">
                                     <label for="placa">
                                       Placa:
-                                      <input type="text" id="placa" placeholder="Tu placa">
+                                      <input class="input-text" type="text" id="placa" placeholder="Tu placa">
                                     </label>
                                   </div>
-                                  <div>
+                                  <div class="campos">
                                     <label for="marca">
                                       Marca:
-                                      <input type="text" id="marca" placeholder="Tu marca">
+                                      <input class="input-text" type="text" id="marca" placeholder="Tu marca">
                                     </label>
                                   </div>
-                                  <div>
+                                  <div class="campos">
                                     <label for="color">
                                       Color:
-                                      <input type="text" id="color" placeholder="Tu color">
+                                      <input class="input-text" type="text" id="color" placeholder="Tu color">
                                     </label>
                                   </div>
-                                  <div id="tipo-vehiculo">
+                                  <div class="campos" id="tipo-vehiculo">
                                     <label for="capacidad-max">
                                         Capacidad Maxima:
-                                        <input type="text" id="capacidad-max" placeholder="Capacidad maxima">
+                                        <input class="input-text" type="text" id="capacidad-max" placeholder="Capacidad maxima">
                                     </label> 
                                   </div>  
                                 </div>  
@@ -197,7 +226,7 @@ formulario.addEventListener('submit', (e) => {
                               </div>  
                             </div>
                             <div>
-                              <input type="submit" value="Guardar" id="guardar">
+                              <input class="boton" type="submit" value="Guardar" id="guardar">
                             </div>      
                             `;
     guardar.addEventListener('click', (e) => {  
@@ -211,34 +240,3 @@ formulario.addEventListener('submit', (e) => {
 
 });
 
-const validarFormulario = (inf) => { 
-
-  let vehiculo;
-
-  const placa = document.querySelector("#placa").value;
-  const marca = document.querySelector("#marca").value;
-  const color = document.querySelector("#color").value;
-
-  if([placa,marca,color, inf.value].includes("")){
-    console.log("Todos los campos son obligatorios");
-    return;
-  }
-
-  if(inf.id === "num-puerta"){
-    const id = generarId();
-    vehiculo = new Automovil(id,inf.value,placa, marca, color);
-    addVehiculo(vehiculo);
-  }
-
-  if(inf.id === "num-llantas"){
-    const id = generarId();
-    vehiculo = new Moto(id,inf.value,placa, marca, color);
-    addVehiculo(vehiculo);
-  }
-
-  if(inf.id === "capacidad-max"){
-    const id = generarId();
-    vehiculo = new Camion(id,inf.value,placa, marca, color);
-    addVehiculo(vehiculo);
-  } 
-}

@@ -7,6 +7,7 @@ class Moto extends Vehiculo {
     this.id = id;
     this.numeroLlantas = numeroLlantas;
   }
+
   // Polimorfismos
   mostrarDatos() {
     return `${super.mostrarDatos()} con numeroLlantas: ${this.numeroLlantas} `;
