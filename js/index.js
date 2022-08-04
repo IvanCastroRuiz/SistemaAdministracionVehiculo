@@ -9,7 +9,6 @@ let camion = document.querySelector('#camion');
 const eliminar = document.querySelector('#eliminar');
 
 
-
 //Modelo
 import Automovil from "../model/Automovil.js";
 import Moto from "../model/Moto.js";
@@ -33,11 +32,12 @@ formulario.addEventListener('submit', (e) => {
   inicio.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarHTML("#index");
-    const infVehiculo = document.querySelector("#inicio");
+    const infVehiculo = document.querySelector("#contenedor-veh");
 
     infVehiculo.innerHTML = `
                               <div id="index">
                                 <h2>Listado de Vehiculos</h2>
+                                <input type="submit" value="Consultar" id="finAll">
                                 <div id="vehiculo">
 
 
@@ -45,13 +45,19 @@ formulario.addEventListener('submit', (e) => {
                               </div>
                             `;
 
+
+    const finAll = document.querySelector("#finAll");
+    finAll.addEventListener("click",  () => { 
+      findAll();
+    });
+
   })
 
   automovil.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarHTML("#index");
-    const infVehiculo = document.querySelector("#inicio");
-
+    const infVehiculo = document.querySelector("#contenedor-veh");
+    
     infVehiculo.innerHTML = `
                             <div id="index">
                               <div id="vehiculo"> 
@@ -83,6 +89,9 @@ formulario.addEventListener('submit', (e) => {
 
                               </div>
                             </div>
+                            <div>
+                              <input type="submit" value="Guardar" id="guardar">
+                            </div>      
                             `;
 
     const guardar = document.querySelector("#guardar");
@@ -102,7 +111,7 @@ formulario.addEventListener('submit', (e) => {
   moto.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarHTML("#vehiculo");
-    const infVehiculo = document.querySelector("#inicio");
+    const infVehiculo = document.querySelector("#contenedor-veh");
     infVehiculo.innerHTML =`
                             <div id="index">
                               <div id="vehiculo"> 
@@ -136,6 +145,9 @@ formulario.addEventListener('submit', (e) => {
 
                               </div>
                             </div>
+                            <div>
+                              <input type="submit" value="Guardar" id="guardar">
+                            </div>      
                         `;
 
     const guardar = document.querySelector("#guardar");
@@ -151,7 +163,7 @@ formulario.addEventListener('submit', (e) => {
   camion.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarHTML("#vehiculo");
-    const infVehiculo = document.querySelector("#inicio");
+    const infVehiculo = document.querySelector("#contenedor-veh");
     infVehiculo.innerHTML = `
                             <div id="index">
                               <div id="vehiculo"> 
@@ -183,6 +195,9 @@ formulario.addEventListener('submit', (e) => {
                                 </div>  
 
                               </div>  
+                            </div>
+                            <div>
+                              <input type="submit" value="Guardar" id="guardar">
                             </div>      
                             `;
     guardar.addEventListener('click', (e) => {  
@@ -225,8 +240,5 @@ const validarFormulario = (inf) => {
     const id = generarId();
     vehiculo = new Camion(id,inf.value,placa, marca, color);
     addVehiculo(vehiculo);
-  }
-
-  findAll();
- 
+  } 
 }
