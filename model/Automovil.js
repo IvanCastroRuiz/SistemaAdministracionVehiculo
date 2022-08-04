@@ -3,10 +3,9 @@ import Vehiculo from "./Vehiculo.js";
 class Automovil extends Vehiculo {
 
     // Constructor Atributos
-    constructor(numeroPuertas, placa, marca, color) {
-        super(id, tipo, placa, marca, color);
-        this.id = id,
-        this.tipo = tipo,    
+    constructor(id, numeroPuertas, placa, marca, color) {
+        super(placa, marca, color);
+        this.id = id;
         this.numeroPuertas = numeroPuertas;
     }
 
